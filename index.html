@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ricoom's Birthday Bash! 🥳🎉</title>
+  <style>
+    /* --- RESET & BASE --- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', 'Poppins', system-ui, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* Festive, premium dark birthday theme with deep purples and neon pops */
+      background: linear-gradient(135deg, #0f0c1b 0%, #241442 50%, #0f0c1b 100%);
+      padding: 1.5rem;
+      overflow-x: hidden;
+    }
+
+    /* --- MAIN CARD --- */
+    .birthday-card {
+      max-width: 700px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 40px;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 0 0 40px rgba(157, 78, 221, 0.15);
+      padding: 2.5rem 2rem 2rem;
+      transition: transform 0.25s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+    }
+
+    .birthday-card:hover {
+      transform: scale(1.01);
+    }
+
+    /* --- ANIMATED CONFETTI EFFECTS --- */
+    .confetti-rain {
+      text-align: center;
+      font-size: 2.5rem;
+      letter-spacing: 10px;
+      margin-bottom: 0.5rem;
+      opacity: 0.9;
+      animation: floatConfetti 3s infinite alternate ease-in-out;
+    }
+
+    @keyframes floatConfetti {
+      0% { transform: translateY(0px) rotate(0deg); }
+      100% { transform: translateY(-10px) rotate(3deg); }
+    }
+
+    /* --- TYPOGRAPHY --- */
+    h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #fff;
+      text-align: center;
+      margin-top: -0.2rem;
+      letter-spacing: -0.5px;
+      background: linear-gradient(45deg, #ff9e00, #e0aaff, #3a0ca3);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 30px rgba(255, 158, 0, 0.2);
+    }
+
+    .sub-message {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #e0aaff;
+      margin: 0.8rem 0 1.8rem;
+      font-weight: 500;
+      border-top: 2px dashed rgba(224, 170, 255, 0.3);
+      border-bottom: 2px dashed rgba(224, 170, 255, 0.3);
+      padding: 0.8rem 0;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 40px;
+    }
+
+    .sub-message i {
+      font-style: normal;
+      display: inline-block;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.7; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.03); }
+      100% { opacity: 0.7; transform: scale(1); }
+    }
+
+    .birthday-quote {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 1.2rem 1.8rem;
+      border-radius: 20px;
+      margin: 1.5rem 0 2rem;
+      font-size: 1.1rem;
+      color: #f7f4f9;
+      text-align: center;
+      font-weight: 400;
+      border-left: 6px solid #ff9e00;
+      border-right: 6px solid #d4eded;
+    }
+
+    .birthday-quote span {
+      font-weight: 700;
+      color: #ff9e00;
+    }
+
+    /* --- FORM SECTION --- */
+    .form-section {
+      background: rgba(255, 255, 255, 0.02);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border-radius: 32px;
+      padding: 2rem 1.8rem;
+      margin-top: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .form-section h2 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 1.5rem;
+    }
+
+    /* --- FORM ELEMENTS --- */
+    .input-group {
+      margin-bottom: 1.4rem;
+    }
+
+    .input-group label {
+      display: block;
+      font-weight: 500;
+      color: #e0aaff;
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+      letter-spacing: 0.3px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .input-group label i {
+      font-style: normal;
+    }
+
+    .input-group textarea {
+      width: 100%;
+      padding: 1rem 1.2rem;
+      border: 2px solid rgba(224, 170, 255, 0.2);
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 24px;
+      font-size: 1rem;
+      transition: all 0.2s;
+      outline: none;
+      color: #fff;
+      font-weight: 400;
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .input-group textarea:focus {
+      border-color: #ff9e00;
+      background: rgba(0, 0, 0, 0.3);
+      box-shadow: 0 0 0 5px rgba(255, 158, 0, 0.15);
+    }
+
+    /* --- ACTION BUTTONS --- */
+    .btn-mpesa {
+      width: 100%;
+      padding: 1rem;
+      background: linear-gradient(135deg, #1b9306, #4cd964);
+      border: none;
+      border-radius: 60px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 1.5rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 8px 20px rgba(76, 217, 100, 0.3);
+      letter-spacing: 0.5px;
+      text-decoration: none; /* For link tag representation */
+    }
+
+    .btn-mpesa:hover {
+      transform: scale(1.02);
+      background: linear-gradient(135deg, #157303, #3cb652);
+      box-shadow: 0 12px 24px rgba(76, 217, 100, 0.4);
+    }
+
+    .btn-send {
+      width: 100%;
+      padding: 1rem;
+      background: linear-gradient(135deg, #7b2cbf, #5a189a);
+      border: none;
+      border-radius: 60px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: white;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 8px 18px rgba(123, 44, 191, 0.3);
+      letter-spacing: 0.5px;
+    }
+
+    .btn-send:hover:not(:disabled) {
+      transform: scale(1.02);
+      background: linear-gradient(135deg, #9d4edd, #7b2cbf);
+      box-shadow: 0 12px 24px rgba(157, 78, 221, 0.4);
+    }
+
+    .btn-send:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .btn-send i, .btn-mpesa i {
+      font-style: normal;
+      font-size: 1.5rem;
+    }
+
+    /* --- FEEDBACK --- */
+    #form-feedback {
+      margin-top: 1.2rem;
+      text-align: center;
+      font-weight: 500;
+      padding: 0.6rem;
+      border-radius: 40px;
+      font-size: 0.95rem;
+      background: rgba(255, 255, 255, 0.02);
+      color: #caf0f8;
+      transition: all 0.2s;
+      min-height: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-note {
+      margin-top: 2.5rem;
+      text-align: center;
+      color: #9d4edd;
+      font-size: 0.9rem;
+      opacity: 0.8;
+      letter-spacing: 2px;
+      font-weight: 400;
+    }
+
+    /* --- THANK YOU MESSAGE --- */
+    .thank-you-message {
+      display: none;
+      text-align: center;
+      padding: 2rem 0;
+    }
+
+    .thank-you-message.show {
+      display: block;
+    }
+
+    .thank-you-message .big-cake {
+      font-size: 4rem;
+      animation: pulse 1.5s infinite;
+    }
+
+    .thank-you-message h2 {
+      color: #ff9e00;
+      margin: 1rem 0;
+      font-size: 2.2rem;
+    }
+
+    .thank-you-message p {
+      color: #f7f4f9;
+      font-size: 1.2rem;
+      margin: 0.5rem 0;
+    }
+
+    .btn-resend {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.8rem 2rem;
+      background: linear-gradient(135deg, #ff9e00, #e0aaff);
+      color: #0f0c1b;
+      border: none;
+      border-radius: 40px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .btn-resend:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(255, 158, 0, 0.4);
+    }
+
+    [data-fs-error] {
+      color: #ff4d4d;
+      font-size: 0.85rem;
+      margin-top: 0.3rem;
+      display: block;
+    }
+
+    /* --- MOBILE RESPONSIVE --- */
+    @media (max-width: 550px) {
+      .birthday-card { padding: 1.8rem 1rem; }
+      h1 { font-size: 2.2rem; }
+      .form-section { padding: 1.5rem 1rem; }
+      .btn-send, .btn-mpesa { font-size: 1.1rem; padding: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="birthday-card">
+    <div class="confetti-rain">🎉🥳🎈✨🎂</div>
+
+    <h1>It's Ricoom's Birthday! 🎂</h1>
+    <div class="sub-message">
+      <i>tomorrow is the big day • let's celebrate! ✨</i>
+    </div>
+
+    <div class="birthday-quote">
+      “Another year older, wiser, and more grateful. Thank you for being a part of <span>my journey</span>!”
+    </div>
+
+    <div id="fs-success-msg" data-fs-success style="display: none;"></div>
+    <div id="fs-error-msg" data-fs-error style="display: none;"></div>
+
+    <div class="form-section" id="formSection">
+      <h2>🎁 Birthday Wishes & Gifts</h2>
+
+      <a href="https://mpesaapp.page.link/MkbC" target="_blank" class="btn-mpesa">
+        <i>💸</i> Send Birthday Gift via M-Pesa
+      </a>
+
+      <form id="loveForm">
+        <div class="input-group">
+          <label for="message"><i>💬</i> leave a birthday message for Ricoom</label>
+          <textarea 
+            id="message" 
+            name="message" 
+            placeholder="Write your happy birthday wishes here..."
+            data-fs-field
+            required
+          ></textarea>
+          <span data-fs-error="message"></span>
+        </div>
+
+        <input type="hidden" name="recipient" value="Ricoom" data-fs-field />
+        <input type="hidden" name="_subject" value="🎉 You received a new Birthday Wish!" data-fs-field />
+
+        <button type="submit" class="btn-send" id="submitBtn" data-fs-submit-btn>
+          <i>💌</i> Send My Wishes
+        </button>
+      </form>
+
+      <div id="form-feedback">✨ Your wishes go directly to Ricoom's inbox ✨</div>
+
+      <div class="thank-you-message" id="thankYouMessage">
+        <div class="big-cake">🎂</div>
+        <h2>Awesome! Thank You! 🎉</h2>
+        <p>Your beautiful birthday wishes mean the world to me!</p>
+        <p>Let's make this year amazing! 🚀</p>
+        <p style="font-size: 2rem; margin: 1rem 0;">✨🥳✨</p>
+        <button class="btn-resend" onclick="resetForm()">Send Another Message</button>
+      </div>
+    </div>
+
+    <div class="footer-note">
+      🎉 Cheers to turn up day, Ricoom 🎉
+    </div>
+  </div>
+
+  <script>
+    window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+    
+    formspree('initForm', { 
+      formElement: '#loveForm', 
+      formId: 'mjgqrpjq',
+      onSuccess: function() {
+        showThankYou();
+      }
+    });
+
+    const form = document.getElementById('loveForm');
+    const feedback = document.getElementById('form-feedback');
+    const submitBtn = document.getElementById('submitBtn');
+    const thankYouMessage = document.getElementById('thankYouMessage');
+    const formSection = document.getElementById('formSection');
+
+    form.addEventListener('submit', function() {
+      submitBtn.innerHTML = '⏳ sending your love... 🎈';
+      feedback.textContent = '🥳 Delivering your wishes to Ricoom...';
+    });
+
+    function showThankYou() {
+      if (form) form.style.display = 'none';
+      if (feedback) feedback.style.display = 'none';
+      // Hide the Mpesa link layout on success view inside the section container card
+      const mpesaBtn = formSection.querySelector('.btn-mpesa');
+      if (mpesaBtn) mpesaBtn.style.display = 'none';
+      
+      thankYouMessage.classList.add('show');
+    }
+
+    function resetForm() {
+      if (form) {
+        form.style.display = 'block';
+        form.reset();
+      }
+      
+      if (feedback) {
+        feedback.style.display = 'flex';
+        feedback.textContent = "✨ Your wishes go directly to Ricoom's inbox ✨";
+      }
+      
+      const mpesaBtn = formSection.querySelector('.btn-mpesa');
+      if (mpesaBtn) mpesaBtn.style.display = 'flex';
+      
+      if (submitBtn) {
+        submitBtn.innerHTML = '<i>💌</i> Send My Wishes';
+      }
+      
+      thankYouMessage.classList.remove('show');
+      formSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  </script>
+  <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+</body>
+</html>
